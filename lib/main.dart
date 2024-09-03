@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:ticket_app/app_routes/app_routes.dart';
 import 'package:ticket_app/ui/components/dashboard_bottom/dashboard_bottom_bar.dart';
@@ -11,7 +12,9 @@ import 'package:ticket_app/ui/screens/tickets_screen/tickets_screen.dart';
 import 'package:ticket_app/utils/app_colors.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+  const ProviderScope(child: MyApp())
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Book Tickets',
+      title: 'Book Your Tickets',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: AppColors.appBgColor),
         scaffoldBackgroundColor: AppColors.appBgColor,

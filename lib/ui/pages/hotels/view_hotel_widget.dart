@@ -31,15 +31,6 @@ Widget hotelWidget(BuildContext context,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Text(
-              //   hotel["place"],
-              //   maxLines: 1,
-              //   style: TextStyle(
-              //     color: AppColors.hotelTxtColor,
-              //     fontSize: 22,
-              //     fontWeight: FontWeight.w600,
-              //   ),
-              // ),
               reusableText(
                 hotel["place"],
                 color: AppColors.hotelTxtColor,
@@ -58,7 +49,6 @@ Widget hotelWidget(BuildContext context,
               SizedBox(
                 height: size.height * 0.005,
               ),
-              // reusableText("₹${hotel["price"]?.toString() ?? 'N/A'}/Night", color: AppColors.hotelTxtColor, fontSize: 22, fontWeight: FontWeight.w600),
               reusableText(
                 "₹${hotel["price"]}/Night",
                 color: AppColors.hotelTxtColor,

@@ -17,146 +17,139 @@ class HomeScreenPage extends StatefulWidget {
 }
 
 class _HomeScreenPageState extends State<HomeScreenPage> {
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppColors.appBgColor,
-      body: ListView(
-        children: [
+        backgroundColor: AppColors.appBgColor,
+        body: ListView(children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // App Heading
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          reusableText(
-                            "Good Morning",
-                            fontWeight: FontWeight.w500,
-                            fontSize: 17,
-                            color: Colors.black,
-                          ),
-                          SizedBox(
-                            height: size.height * .001,
-                          ),
-                          reusableText(
-                            "Book Your Tickets",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 26,
-                            color: AppColors.homeScreenTxtColor,
-                          )
-                        ]),
-                    Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                              image: AssetImage(
-                                ImgPath.logo,
-                              ),
-                            )))
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                // Search Bar
-                Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 12),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColors.homeScreenSearchBarColor),
-                    child: Row(children: [
-                      const Icon(
-                        FluentSystemIcons.ic_fluent_search_regular,
-                        color: AppColors.homeScreenSearchIconColor,
-                      ),
-                      reusableText("Search")
-                    ])),
-                SizedBox(
-                  height: size.height * 0.04,
-                ),
-                // Ticket Section
-                Column(
-                  children: [
-                    doubleText(context, "Upcoming Flights", "View all", () {
-                      Navigator.pushNamed(context, AppRoutes.allTickets);
-                    }),
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                          children: ticketList
-                              .take(2)
-                              .map((singleTicket) => GestureDetector(
-                            onTap: () {
-                              var index = ticketList.indexOf(singleTicket);
-                              // print("Clicked on Ticket Index $index");
-                              Navigator.pushNamed(context, AppRoutes.ticketScreen,
-                                  arguments: {"index": index});
-                            },
-                            child: TicketsViewWidget(
-                                      ticket: singleTicket,
-                                    ),
-                              ))
-                              .toList()),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.04,
-                ),
-                // Hotels Section
-                Column(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    doubleText(context, "Hotels", "View all", () {
-                      Navigator.pushNamed(context, AppRoutes.hotelPage);
-                    }),
+                    // App Heading
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              reusableText(
+                                "Good Morning",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 17,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                height: size.height * .001,
+                              ),
+                              reusableText(
+                                "Book Your Tickets",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 26,
+                                color: AppColors.homeScreenTxtColor,
+                              )
+                            ]),
+                        Container(
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                    ImgPath.logo,
+                                  ),
+                                )))
+                      ],
+                    ),
                     SizedBox(
                       height: size.height * 0.02,
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                          children: hotelList
-                              .take(2)
-                              .map((singleHotel) => GestureDetector(
-                            onTap: () {
-                              var index = hotelList.indexOf(singleHotel);
-                              Navigator.pushNamed(context, AppRoutes.hotelDetail,
-                                  arguments: {"index": index});
-                            },
-                            child: hotelWidget(
-                                      context,
-                                      hotel: singleHotel,
-
-                                    ),
-                              ))
-                              .toList()),
+                    // Search Bar
+                    Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 12),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.homeScreenSearchBarColor),
+                        child: Row(children: [
+                          const Icon(
+                            FluentSystemIcons.ic_fluent_search_regular,
+                            color: AppColors.homeScreenSearchIconColor,
+                          ),
+                          reusableText("Search")
+                        ])),
+                    SizedBox(
+                      height: size.height * 0.04,
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+                    // Ticket Section
+                    Column(children: [
+                      doubleText(context, "Upcoming Flights", "View all", () {
+                        Navigator.pushNamed(context, AppRoutes.allTickets);
+                      }),
+                      SizedBox(
+                        height: size.height * 0.02,
+                      ),
+                      SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                              children: ticketList
+                                  .take(2)
+                                  .map((singleTicket) => GestureDetector(
+                                      onTap: () {
+                                        var index =
+                                            ticketList.indexOf(singleTicket);
+                                        // print("Clicked on Ticket Index $index");
+                                        Navigator.pushNamed(
+                                            context, AppRoutes.ticketScreen,
+                                            arguments: {"index": index});
+                                      },
+                                      child: TicketsViewWidget(
+                                        ticket: singleTicket,
+                                      )))
+                                  .toList()))
+                    ]),
+                    SizedBox(
+                      height: size.height * 0.04,
+                    ),
+                    // Hotels Section
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        doubleText(context, "Hotels", "View all", () {
+                          Navigator.pushNamed(context, AppRoutes.hotelPage);
+                        }),
+                        SizedBox(
+                          height: size.height * 0.02,
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                              children: hotelList
+                                  .take(2)
+                                  .map((singleHotel) => GestureDetector(
+                                        onTap: () {
+                                          var index =
+                                              hotelList.indexOf(singleHotel);
+                                          Navigator.pushNamed(
+                                              context, AppRoutes.hotelDetail,
+                                              arguments: {"index": index});
+                                        },
+                                        child: hotelWidget(
+                                          context,
+                                          hotel: singleHotel,
+                                        ),
+                                      ))
+                                  .toList()),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    )
+                  ]))
+        ]));
   }
 }
