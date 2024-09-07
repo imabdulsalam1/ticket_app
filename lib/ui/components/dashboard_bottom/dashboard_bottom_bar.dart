@@ -1,7 +1,7 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ticket_app/controller/bottom_nav_provider.dart';
+import 'package:ticket_app/provider/bottom_nav_provider.dart';
 import 'package:ticket_app/ui/screens/home_screen/home_screen_page.dart';
 import 'package:ticket_app/ui/screens/profile_page/profile_screen.dart';
 import 'package:ticket_app/ui/screens/search_page/search_page.dart';

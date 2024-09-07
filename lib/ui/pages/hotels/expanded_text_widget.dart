@@ -1,34 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:ticket_app/controller/expanded_text_controller.dart';
+import 'package:ticket_app/provider/text_expansion_provider.dart';
 import 'package:ticket_app/utils/app_colors.dart';
 import 'package:ticket_app/utils/global_widgets.dart';
 
-class ExpandedTextWidget extends StatelessWidget {
-  ExpandedTextWidget({super.key, required this.text});
+class ExpandedTextWidget extends ConsumerWidget {
+  const ExpandedTextWidget({super.key, required this.text});
   final String text;
 
-  final TextExpansionController controller = Get.put(TextExpansionController());
+  // Using GetX
+  // final TextExpansionController controller = Get.put(TextExpansionController());
   @override
-  Widget build(BuildContext context) {
-    return Obx(() {
-      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
-          text,
-          maxLines: controller.isExpanded.value ? null : 9,
-          overflow: controller.isExpanded.value
-              ? TextOverflow.visible
-              : TextOverflow.ellipsis,
-        ),
-        GestureDetector(
-            onTap: controller.toggleExpansion,
-            child: reusableText(
-              controller.isExpanded.value ? "Less" : "More",
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor,
-            ))
-      ]);
-    });
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Using RiverPod
+  var provider = ref.watch(textExpansionNotifierProvider);
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        text,
+        maxLines: provider ? null : 9,
+        overflow: provider
+            ? TextOverflow.visible
+            : TextOverflow.ellipsis,
+      ),
+      GestureDetector(
+          onTap: (){
+            ref.watch(textExpansionNotifierProvider.notifier).toggleText(provider);
+          },
+          child: reusableText(
+            provider ? "Less" : "More",
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primaryColor,
+          ))
+    ]);
   }
 }
