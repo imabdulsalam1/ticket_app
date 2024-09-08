@@ -16,7 +16,7 @@ class _HotelPageState extends State<GridHotelPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final childAspectRatio = (size.width / 1.8) / (size.height * 0.45);
+    final childAspectRatio = (size.width / 1.65) / (size.height * 0.38);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +30,7 @@ class _HotelPageState extends State<GridHotelPage> {
       body: GridView.builder(
         gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 16.0,
+          mainAxisSpacing: 8.0,
           childAspectRatio: childAspectRatio,
         ),
         itemCount: hotelList.length,
@@ -41,11 +41,12 @@ class _HotelPageState extends State<GridHotelPage> {
               Navigator.pushNamed(
                 context,
                 AppRoutes.hotelDetail,
-                arguments: {"index": index},
+                arguments: {"index": index}
               );
               // print("Tapped on Index $index");
             },
             child: Container(
+              // height: size.height * 0.001,
               margin: const EdgeInsets.only(left: 16.0,bottom: 20),
               child: hotelWidget(
                 context,

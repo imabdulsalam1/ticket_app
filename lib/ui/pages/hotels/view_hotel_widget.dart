@@ -26,8 +26,7 @@ Widget hotelWidget(BuildContext context,
           ),
         ),
         Container(
-          // height: size.height,
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(left: 8,right: 8,top: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

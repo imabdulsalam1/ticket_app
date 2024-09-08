@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
-import 'package:ticket_app/controller/expanded_text_controller.dart';
 import 'package:ticket_app/provider/text_expansion_provider.dart';
 import 'package:ticket_app/utils/app_colors.dart';
 import 'package:ticket_app/utils/global_widgets.dart';

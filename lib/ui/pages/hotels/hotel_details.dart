@@ -18,7 +18,7 @@ class _HotelDetailsState extends State<HotelDetails> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final args =
-    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
     if (args == null || !args.containsKey('index')) {
       Navigator.pop(context);
       return;
@@ -33,102 +33,92 @@ class _HotelDetailsState extends State<HotelDetails> {
 
     return Scaffold(
         body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryColor,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
+      slivers: [
+        SliverAppBar(
+            pinned: true,
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              expandedHeight: 300,
-              flexibleSpace: FlexibleSpaceBar(
+            ),
+            expandedHeight: 300,
+            flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                background: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        "assets/hotel_images/${hotel["image"]}",
-                        fit: BoxFit.cover,
-                      ),
+                background: Stack(children: [
+                  Positioned.fill(
+                    child: Image.asset(
+                      "assets/hotel_images/${hotel["image"]}",
+                      fit: BoxFit.cover,
                     ),
-                    Positioned(
+                  ),
+                  Positioned(
                       bottom: 20,
                       left: 50,
                       right: 50,
                       child: Center(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          color: Colors.black.withOpacity(0.2),
-                          child: Text(
-                            hotel["place"] ?? "Hotel Detail",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: AppColors.appBgColor,
-                              shadows: [
-                                Shadow(
-                                  blurRadius: 10.0,
-                                  color: AppColors.primaryColor,
-                                  offset: Offset(2.0, 2.0),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                          child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              color: Colors.black.withOpacity(0.2),
+                              child: Text(hotel["place"] ?? "Hotel Detail",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      color: AppColors.appBgColor,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 10.0,
+                                          color: AppColors.primaryColor,
+                                          offset: Offset(2.0, 2.0),
+                                        )
+                                      ])))))
+                ]))),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ExpandedTextWidget(
+                text: hotel["description"] ?? "",
               ),
             ),
-            SliverList(
-              delegate: SliverChildListDelegate([
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ExpandedTextWidget(
-                    text: hotel["description"] ?? "",
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: reusableText(
-                    "More Images",
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 200.0,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: hotel["images"].length,
-                    itemBuilder: (context, imgIndex) {
-                      return Container(
-                        margin: const EdgeInsets.all(16),
-                        color: Colors.red,
-                        child: Image.network(hotel["images"][imgIndex]),
-                      );
-                    },
-                  ),
-                )
-              ]),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: reusableText(
+                "More Images",
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ],
-        ));
+            SizedBox(
+              height: 200.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: hotel["images"].length,
+                itemBuilder: (context, imgIndex) {
+                  return Container(
+                    margin: const EdgeInsets.all(16),
+                    color: Colors.red,
+                    child: Image.network(hotel["images"][imgIndex]),
+                  );
+                },
+              ),
+            )
+          ]),
+        ),
+      ],
+    ));
   }
 }
-

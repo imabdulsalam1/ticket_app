@@ -1,19 +1,9 @@
-// abstract class BottomNavState{}
-//
-// class BottomNavBarInitial extends BottomNavState{}
-//
-// class BottomNavBarSelected extends BottomNavState{
-//   final int selectedIndex;
-//   BottomNavBarSelected(this.selectedIndex);
-//
-// }
-
 abstract class BottomNavState {}
 
 class BottomNavBarInitial extends BottomNavState {}
 
 class BottomNavBarSelected extends BottomNavState {
-  final int index;
+  final int selectedIndex;
 
-  BottomNavBarSelected(this.index);
+  BottomNavBarSelected(this.selectedIndex);
 }
