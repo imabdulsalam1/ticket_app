@@ -1,0 +1,2 @@
+C:/Users/imabd/OneDrive/Desktop/Projects/ticket_app/android/app/.cxx/Debug/d1eo6u5c/x86/CMakeFiles/edit_cache.dir
+C:/Users/imabd/OneDrive/Desktop/Projects/ticket_app/android/app/.cxx/Debug/d1eo6u5c/x86/CMakeFiles/rebuild_cache.dir

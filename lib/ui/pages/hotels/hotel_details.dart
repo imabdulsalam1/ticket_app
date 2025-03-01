@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:ticket_app/json/hotel_json.dart';
 import 'package:ticket_app/ui/pages/hotels/expanded_text_widget.dart';
@@ -23,7 +25,6 @@ class _HotelDetailsState extends State<HotelDetails> {
       Navigator.pop(context);
       return;
     }
-
     index = args['index'];
   }
 

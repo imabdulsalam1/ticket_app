@@ -127,6 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     children: [
                     textStyle2("You'v got a new award",maxLines: 2),
+                    // ignore: deprecated_member_use
                     reusableText("You 95 flights in this year",color: Colors.white.withOpacity(0.8),fontWeight: FontWeight.w500),
 
                   ],)
